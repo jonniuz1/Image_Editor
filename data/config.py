@@ -14,6 +14,6 @@
 import os
 
 BOT_TOKEN = str(os.environ.get("BOT_TOKEN"))
-ADMINS = str(os.environ.get("ADMINS"))
+ADMINS = int(os.environ.get("ADMINS"))
 IP = str(os.environ.get("ip"))
 API_TOKEN = str(os.environ.get("API_TOKEN"))
