@@ -13,6 +13,7 @@
 
 import os
 
+CHANNELS = list(map(int, (str(os.environ["CHANNELS"])).split(',')))
 BOT_TOKEN = str(os.environ.get("BOT_TOKEN"))
 ADMINS = list(map(int, (str(os.environ["ADMINS"])).split(',')))
 IP = str(os.environ.get("ip"))
