@@ -7,16 +7,17 @@ from utils.set_bot_commands import set_default_commands
 
 
 async def on_startup(dispatcher):
+    # await db.create()
     # Birlamchi komandalar (/star va /help)
+    try:
+        db.create_table_users()
+    except Exception as err:
+        print(err)
     await set_default_commands(dispatcher)
 
     # Bot ishga tushgani haqida adminga xabar berish
     await on_startup_notify(dispatcher)
 
-    try:
-        db.create_table_users()
-    except Exception as err:
-        print(err)
 
 
 if __name__ == '__main__':

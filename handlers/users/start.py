@@ -2,7 +2,6 @@ import sqlite3
 
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
-from aiogram.types import ParseMode
 
 from data.config import ADMINS
 from loader import dp, db, bot
@@ -20,5 +19,6 @@ async def bot_start(message: types.Message):
 
     await message.answer("Xush kelibsiz!")
     # Adminga xabar beramiz
-    msg = f"<a href='tg://user?id={message.from_user.id}'>{message.from_user.full_name}</a> bazaga qo'shildi."
-    await bot.send_message(chat_id=ADMINS[0], text=msg, parse_mode=ParseMode.HTML)
+    count = db.count_users()[0]
+    msg = f"<a href='tg://user?id={message.from_user.id}'>{message.from_user.full_name}</a> bazaga qo'shildi.\nBazada {count} ta foydalanuvchi bor."
+    await bot.send_message(chat_id=ADMINS[0], text=msg)

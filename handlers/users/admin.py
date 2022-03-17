@@ -7,11 +7,11 @@ from loader import dp, db, bot
 from states.for_ads import Ad
 from utils.photograph import photo_link
 
-
 @dp.message_handler(text="/allusers", user_id=ADMINS)
 async def get_all_users(message: types.Message):
     count = db.count_users()[0]
     await message.answer(f"{count} ta obunachi bor!")
+
 
 
 @dp.message_handler(text="/reklama", user_id=ADMINS, state=None)
@@ -30,7 +30,7 @@ async def send_ad_to_all(message: types.Message, state: FSMContext):
         user_id = user[0]
         await bot.send_photo(chat_id=user_id, photo=url, caption=msg)
         await asyncio.sleep(0.05)
-    await bot.send_photo(chat_id=CHANNELS[-1], photo=url ,caption=msg)
+    await bot.send_photo(chat_id=CHANNELS[-1], photo=url, caption=msg)
     await state.finish()
     await message.reply("Reklama muvaffaqiyatli jo'natildi")
 
