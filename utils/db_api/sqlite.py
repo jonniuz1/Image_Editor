@@ -32,7 +32,6 @@ class Database:
         CREATE TABLE Users (
             id int NOT NULL,
             Name varchar(255) NOT NULL,
-            email varchar(255),
             language varchar(3),
             PRIMARY KEY (id)
             );
